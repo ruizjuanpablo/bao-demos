@@ -10,8 +10,8 @@ qemu_cmd:=qemu-system-$(qemu_arch)
 
 #override the qemu repo to our patched repo
 #TODO: remove this when small riscv bugs on qemu are fixed
-qemu_repo:=https://github.com/josecm/qemu.git
-qemu_cur_ver:=josecm/hyp
+qemu_repo:=https://github.com/ruizjuanpablo/qemu
+qemu_cur_ver:=juanpablo/2uarts
 
 ifeq ($(shell which $(qemu_cmd)),)
 qemu_src:=$(wrkdir_src)/qemu
