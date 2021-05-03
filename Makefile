@@ -102,17 +102,17 @@ bao $(bao_image): $(guest_images) $(bao_cfg) $(bao_src)
 	cp $(bao_src)/bin/$(PLATFORM)/builtin-configs/$(DEMO)/bao.bin $(bao_image)
 
 bao_clean:
-	$(MAKE) -C $(bao_src) clean\
-		PLATFORM=$(PLATFORM)\
-		CONFIG_REPO=$(bao_cfg_repo)\
-		CONFIG=$(DEMO)
+	$(MAKE) -C $(bao_src) clean
 
 platform: $(bao_image)
 
-guests_clean bao_clean platform_clean:
+bao_clean platform_clean:
+
+guests_clean:
+	rm -rf $(wrkdir)/srcs/$(DEMO)/build/$(PLATFORM)
 
 clean: guests_clean bao_clean platform_clean
-	-@rm -rf $(wrkdir)/imgs/$(PLAT)/$(DEMO)
+	rm -rf $(wrkdir)/imgs/$(PLATFORM)/$(DEMO)
 
 distclean:
 	rm -rf $(wrkdir)
